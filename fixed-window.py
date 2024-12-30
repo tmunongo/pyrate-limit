@@ -25,7 +25,7 @@ class RateLimiter:
         return False
 
 app = FastAPI()
-limiter = RateLimiter(limit=5, window_size=10)  # 5 requests per 10 seconds
+limiter = RateLimiter(limit=20, window_size=10)
 
 @app.middleware("http")
 async def rate_limit(request: Request, call_next):
@@ -38,4 +38,4 @@ async def rate_limit(request: Request, call_next):
 
 @app.get("/")
 def root():
-    return {"message": "Hello World"}
+    return {"message": "Request successful!"}

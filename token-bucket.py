@@ -23,7 +23,7 @@ class TokenBucket:
         return False
 
 app = FastAPI()
-bucket = TokenBucket(capacity=200, rate=10, window=1)
+bucket = TokenBucket(capacity=200, rate=10, window=10)
 
 @app.middleware("http")
 async def rate_limit(request: Request, call_next):
